@@ -1,9 +1,8 @@
 import java.util.Objects;
 
 public class EthernetAdapter extends Device {
-    int speed;
-    String mac;
-
+    private int speed;
+    private String mac;
 
     public EthernetAdapter(String manufacture, float price, String serialNumber, int speed, String mac) {
         super(manufacture, price, serialNumber);
@@ -19,20 +18,11 @@ public class EthernetAdapter extends Device {
         return mac;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public void setMac(String mac) {
-        this.mac = mac;
-    }
-
     @Override
     public String toString() {
-        return "EthernetAdapter{" +
-                "speed=" + speed +
-                ", mac='" + mac + '\'' +
-                '}';
+        return "EthernetAdapter: manufacture = " + getManufacture() + ", price = "
+                + getPrice() + ", serialNumber=" + getSerialNumber() + ", speed" +
+                "=" + getSpeed() + ", mac=" + getMac();
     }
 
     @Override
@@ -47,5 +37,6 @@ public class EthernetAdapter extends Device {
     @Override
     public int hashCode() {
         return Objects.hash(speed, mac);
+
     }
 }

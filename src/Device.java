@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Device {
 protected String manufacture;
 protected float price;
@@ -21,17 +23,7 @@ protected String serialNumber;
         return serialNumber;
     }
 
-    public void setManufacture(String manufacture) {
-        this.manufacture = manufacture;
-    }
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
-    }
 
     @Override
     public String toString() {
@@ -40,5 +32,18 @@ protected String serialNumber;
                 ", price=" + price +
                 ", serialNumber='" + serialNumber + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Device device = (Device) o;
+        return manufacture == device.manufacture&&price==device
+                .price&&serialNumber.equals(device.serialNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(manufacture, price, serialNumber);
     }
 }

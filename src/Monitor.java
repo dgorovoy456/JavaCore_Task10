@@ -1,8 +1,10 @@
 import java.util.Objects;
+import java.util.Random;
 
 public class Monitor extends Device {
     private int resolutionX;
     private int resolutiony;
+    private  int random = new Random().nextInt(1000);
 
     public Monitor(String manufacture, float price, String serialNumber, int resolutionX, int resolutiony) {
         super(manufacture, price, serialNumber);
@@ -20,23 +22,12 @@ public class Monitor extends Device {
 
 
 
-    public void setResolutionX(int resolutionX) {
-        this.resolutionX = resolutionX;
-    }
-
-    public void setResolutiony(int resolutiony) {
-        this.resolutiony = resolutiony;
-    }
 
     @Override
     public String toString() {
         return "Monitor: manufacture = "+getManufacture() +", price = "
                 +getPrice()+", serialNumber "+getSerialNumber()
                 + ", X= "+getResolutionX() + ", Y= "+getResolutiony();
-
-
-
-
     }
 
     @Override
@@ -45,11 +36,11 @@ public class Monitor extends Device {
         if (o == null || getClass() != o.getClass()) return false;
         Monitor monitor = (Monitor) o;
         return resolutionX == monitor.resolutionX &&
-                resolutiony == monitor.resolutiony;
+                resolutiony == monitor.resolutiony && serialNumber.equals(monitor.serialNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(resolutionX, resolutiony);
+        return Objects.hash(resolutionX, resolutiony,serialNumber,random);
     }
 }
